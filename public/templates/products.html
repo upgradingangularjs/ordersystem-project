@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>{{title}}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="product in products">
+                    <td><a data-ng-href="#/products/{{product.id}}">{{product.id}}</a></td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.color}}</td>
+                    <td>{{product.price | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

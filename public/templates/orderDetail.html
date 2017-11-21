@@ -1,0 +1,59 @@
+<div class="row">
+    <h1>{{title}}: {{order.id}}</h1>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <h3>Customer Name:</h3>
+    </div>
+    <div class="col-md-4 end">
+        <h3>{{customer.fullName}}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Items</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Item Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="item in order.items">
+                    <td>
+                        <a data-ng-href="#/products/{{item.productId}}">{{item.productId}}</td>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.itemPrice | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" data-ng-if="customer.getsDiscount">
+    <div class="col-md-3">
+        <h4>Total Cost:</h4>
+    </div>
+    <div class="col-md-4 end">
+        <h4>{{order.totalCost | currency}}</h4>
+    </div>
+</div>
+<div class="row" data-ng-if="customer.getsDiscount">
+    <div class="col-md-3">
+        <h4>Customer Discount:</h4>
+    </div>
+    <div class="col-md-4 end">
+        <h4>{{customer.discount.discountPercent}}%</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <h4>Total Sale:</h4>
+    </div>
+    <div class="col-md-4 end">
+        <h4>{{order.totalSale | currency}}</h4>
+    </div>
+</div>

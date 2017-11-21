@@ -1,0 +1,19 @@
+<div class="row">
+    <h1>{{title}}: {{product.name}}</h1>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <b>Color:</b>
+    </div>
+    <div class="col-md-4 end">
+        {{product.color}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <b>Price:</b>
+    </div>
+    <div class="col-md-4 end">
+        {{product.price | currency}}
+    </div>
+</div>

@@ -4,13 +4,13 @@ angular.module('app')
             templateUrl : './templates/home.html',
             controller  : 'homeController'
         }).when('/customers', {
-            templateUrl : './templates/customers.html',
+            templateUrl : './customers/customers.html',
             controller  : 'customersController'
         }).when('/orders', {
-            templateUrl : './templates/orders.html',
+            templateUrl : './orders/orders.html',
             controller  : 'ordersController'
         }).when('/products', {
-            templateUrl : './templates/products.html',
+            templateUrl : './products/products.html',
             controller  : 'productsController'
         }).when('/customers/:id', {
             templateUrl : './templates/customerDetail.html',

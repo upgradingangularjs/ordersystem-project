@@ -1,7 +1,7 @@
 angular.module('app').controller('customerDetailController', ['$scope', 'customer', 'addressFactory', 'orderService',
     function ($scope, customer, addressFactory, orderService) {
         $scope.title = 'Customer Detail';
-        $scope.discountTemplate = '../templates/discount.html';
+        $scope.discountTemplate = '../customerDetail/discount.html';
         $scope.customer = customer;
         $scope.address = addressFactory.getFullAddress(customer);
 

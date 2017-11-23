@@ -1,7 +1,7 @@
 angular.module('app')
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
-            templateUrl : './templates/home.html',
+            templateUrl : './home/home.html',
             controller  : 'homeController'
         }).when('/customers', {
             templateUrl : './customers/customers.html',
@@ -13,7 +13,7 @@ angular.module('app')
             templateUrl : './products/products.html',
             controller  : 'productsController'
         }).when('/customers/:id', {
-            templateUrl : './templates/customerDetail.html',
+            templateUrl : './customerDetail/customerDetail.html',
             controller  : 'customerDetailController',
             resolve: {
                 customer: [
@@ -24,7 +24,7 @@ angular.module('app')
                 ]
 			}
         }).when('/orders/:id', {
-            templateUrl : './templates/orderDetail.html',
+            templateUrl : './orderDetail/orderDetail.html',
             controller  : 'orderDetailController',
             resolve: {
                 order: [
@@ -35,7 +35,7 @@ angular.module('app')
                 ]
             }
         }).when('/products/:id', {
-            templateUrl : './templates/productDetail.html',
+            templateUrl : './productDetail/productDetail.html',
             controller  : 'productDetailController',
             resolve: {
                 product: [

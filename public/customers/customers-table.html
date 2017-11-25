@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Discount?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="customer in $ctrl.customers">
+            <td><a data-ng-href="#/customers/{{customer.id}}">{{customer.fullName}}</td>
+            <td>{{customer.address1}}</td>
+            <td>{{customer.address2}}</td>
+            <td>{{customer.city}}</td>
+           <td>{{customer.state}}</td>
+            <td>{{customer.zip}}</td>
+            <td>{{customer.getsDiscount ? 'Yes':'No'}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-            <h1>{{title}}</h1>
+            <h1>{{$ctrl.title}}</h1>
     <table class="table">
         <thead>
             <tr>
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="customer in customers">
+            <tr data-ng-repeat="customer in $ctrl.customers">
                 <td><a data-ng-href="#/customers/{{customer.id}}">{{customer.fullName}}</td>
                 <td>{{customer.address1}}</td>
                 <td>{{customer.address2}}</td>

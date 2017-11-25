@@ -4,8 +4,7 @@ angular.module('app')
             templateUrl : './home/home.html',
             controller  : 'homeController'
         }).when('/customers', {
-            templateUrl : './customers/customers.html',
-            controller  : 'customersController'
+            template: '<customers></customers>'
         }).when('/orders', {
             templateUrl : './orders/orders.html',
             controller  : 'ordersController'

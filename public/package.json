@@ -9,8 +9,8 @@
   "author": "Sam Julien",
   "license": "ISC",
   "dependencies": {
-    "angular": "1.3.20",
-    "angular-route": "1.3.20",
+    "angular": "1.4.14",
+    "angular-route": "1.4.14",
     "jquery": "^2.2.4",
     "moment": "~2.17.1",
     "bootstrap": "3.3.7",

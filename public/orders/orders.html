@@ -1,5 +1,5 @@
 <div class="row">
-    <h1>{{title}}</h1>
+    <h1>{{$ctrl.title}}</h1>
     <table class="table">
             <thead>
                 <tr>
@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="order in orders">
+                <tr data-ng-repeat="order in $ctrl.orders">
                     <td><a data-ng-href="#/orders/{{order.id}}">{{order.id}}</a></td>
                     <td>{{order.customerName}}</td>
                     <td>{{order.totalItems}}</td>

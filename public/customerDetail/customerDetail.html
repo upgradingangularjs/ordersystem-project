@@ -18,7 +18,9 @@
     </div>
 </div>
 <br/>
-<discount data-ng-if="$ctrl.customer.getsDiscount" customer-discount="$ctrl.customer.discount"></discount>
+<discount data-ng-if="$ctrl.customer.getsDiscount" 
+    customer-discount="$ctrl.customer.discount"
+    update="$ctrl.updateDiscount(discount)"></discount>
 <div class="row" data-ng-if="$ctrl.orders.length > 0">
     <div class="col-md-12">
         <h3>Orders</h3>

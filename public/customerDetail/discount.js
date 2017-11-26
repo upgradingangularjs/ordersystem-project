@@ -5,6 +5,7 @@
         templateUrl: './customerDetail/discount.html',
         bindings: {
             customerDiscount: '<',
+            update: '&'
         },
         controller: discountComponentController
     };
@@ -19,6 +20,7 @@
         }
 
         vm.updateDiscountType = function () {
+            vm.update({discount: vm.selectedDiscount});
             vm.editDiscount = false;
         }
 

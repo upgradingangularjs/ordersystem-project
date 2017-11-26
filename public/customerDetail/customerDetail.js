@@ -1,16 +1,28 @@
-angular.module('app').controller('customerDetailController', ['$scope', 'customer', 'addressFactory', 'orderService',
-    function ($scope, customer, addressFactory, orderService) {
-        $scope.title = 'Customer Detail';
-        $scope.discountTemplate = '../customerDetail/discount.html';
-        $scope.customer = customer;
-        $scope.address = addressFactory.getFullAddress(customer);
+(function(){
+    'use strict';
 
-        activate();
+    var customerDetailComponent = {
+        templateUrl: './customerDetail/customerDetail.html',
+        bindings: {
+            customer: '<'
+        },
+        controller: customerDetailComponentController
+    };
 
-        function activate() {
-            $scope.orders = orderService.getOrdersByCustomer($scope.customer.id);
-            $scope.orders.forEach(function (order) {
+    customerDetailComponentController.$inject = ['addressFactory', 'orderService'];
+    function customerDetailComponentController (addressFactory, orderService) {
+        var vm = this;
+        vm.title = 'Customer Detail';
+        vm.customer = this.customer;
+        
+        vm.$onInit = function() {
+            vm.address = addressFactory.getFullAddress(vm.customer);
+            vm.orders = orderService.getOrdersByCustomer(vm.customer.id);
+            vm.orders.forEach(function (order) {
                 order.orderDate = moment(order.orderDate).format("MM/DD/YYYY");
             });
         }
-    }]);
+    }
+
+    angular.module('app').component('customerDetail', customerDetailComponent);
+})();

@@ -1,28 +1,26 @@
-angular.module('app')
-    .service('customerService', ['$http', function ($http) {
-        function getCustomers() {
-            return customers();
-        }
+class CustomerService {
+    $http: any;
+    constructor($http){
+        this.$http = $http;
+    }
 
-        function getCustomer(id) {
-            return customers().filter(function (c) {
-                return c.id === id;
-            })[0];
-        }
+    getCustomers() {
+        return customers();
+    }
 
-        function postCustomer(customer) {
-            return $http.post('/api/customers', customer)
-                .then(function (data) {
-                    return data;
-                });
-        }
+    getCustomer(id) {
+        return customers().filter((c) => c.id === id)[0];
+    }
 
-        return {
-            getCustomers: getCustomers,
-            getCustomer: getCustomer,
-            postCustomer: postCustomer
-        }
-    }]);
+    postCustomer(customer) {
+        return this.$http.post('/api/customers', customer)
+            .then((data) => data);
+    }
+}
+
+CustomerService.$inject = ['$http'];
+
+export default CustomerService;
 
 //Sample data
 function customers() {

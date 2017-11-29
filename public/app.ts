@@ -1,6 +1,12 @@
 import * as angular from 'angular';
 import 'angular-route';
 
+import 'jquery';
+import 'lodash';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "./styles/app.css";
+
 import hashPrefixConfig from './config.hashprefix';
 import routeProviderConfig from './config.routes';
 import homeComponent from './home/home';

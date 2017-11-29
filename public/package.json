@@ -17,6 +17,9 @@
     "lodash": "4.17.4"
   },
   "devDependencies": {
+    "@types/angular": "^1.6.39",
+    "ts-loader": "^3.1.1",
+    "typescript": "2.4.2",
     "webpack": "^3.3.0"
   }
 }

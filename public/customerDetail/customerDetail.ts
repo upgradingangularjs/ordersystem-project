@@ -9,20 +9,23 @@ const customerDetailComponent = {
 };
 
 customerDetailComponentController.$inject = ['addressService', 'orderService'];
-function customerDetailComponentController (addressService, orderService) {
+function customerDetailComponentController(addressService, orderService) {
     var vm = this;
     vm.title = 'Customer Detail';
     vm.customer = this.customer;
-    
+
     vm.$onInit = () => {
         vm.address = addressService.getFullAddress(vm.customer);
-        vm.orders = orderService.getOrdersByCustomer(vm.customer.id);
-        vm.orders.forEach((order) => {
-            order.orderDate = moment(order.orderDate).format("MM/DD/YYYY");
-        });
+        return orderService.getOrdersByCustomer(vm.customer.id)
+            .then((data) => {
+                vm.orders = data;
+                vm.orders.forEach((order) => {
+                    order.orderDate = moment(order.orderDate).format("MM/DD/YYYY");
+                });
+            });
     }
 
-    vm.updateDiscount = function(discount){
+    vm.updateDiscount = function (discount) {
         vm.customer.discount = discount;
     };
 }

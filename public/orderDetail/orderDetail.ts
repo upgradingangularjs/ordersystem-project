@@ -9,21 +9,24 @@ const orderDetailComponent = {
     controller: orderDetailComponentController
 };
 
-orderDetailComponentController.$inject = ['productService', 'customerService'];
-function orderDetailComponentController(productService, customerService) {
+orderDetailComponentController.$inject = ['productService', 'customerService', '$q'];
+function orderDetailComponentController(productService, customerService, $q) {
     var vm = this;
     vm.title = 'Order Detail';
     vm.order = this.order;
 
-    vm.$onInit = () => {
-        var products = productService.getProducts();
-        vm.customer = customerService.getCustomer(vm.order.customerId);
-        vm.order.items.forEach(function (item) {
-            var product = _.find(products, function (product) {
-                return product.id === item.productId;
+    vm.$onInit = function() {
+        let promises = [productService.getProducts(), customerService.getCustomer(vm.order.customerId)];
+        return $q.all(promises).then((data) => {
+            var products = data[0];
+            vm.customer = data[1];
+            vm.order.items.forEach(function (item) {
+                var product = _.find(products, function (product) {
+                    return product.id === item.productId;
+                })
+                item.productName = product.name;
+                item.itemPrice = item.quantity * product.price;
             });
-            item.productName = product.name;
-            item.itemPrice = item.quantity * product.price;
         });
     };
 }

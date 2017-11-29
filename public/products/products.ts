@@ -10,7 +10,8 @@ function productsComponentController(productService){
     vm.title = 'Products';
 
     vm.$onInit = function(){
-        vm.products = productService.getProducts();
+        return productService.getProducts()
+            .then((data) => vm.products = data);
     };
 }
 

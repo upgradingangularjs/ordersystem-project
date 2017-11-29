@@ -10,7 +10,9 @@ function customersComponentController(customerService){
     vm.title = 'Customers';
 
     vm.$onInit = () => {
-        vm.customers = customerService.getCustomers();
+        customerService.getCustomers().then((data) => {
+            vm.customers = data;
+        });
     };
 }
 

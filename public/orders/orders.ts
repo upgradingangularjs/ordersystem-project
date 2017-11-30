@@ -1,8 +1,10 @@
 //Don't forget to import lodash
 import * as _ from 'lodash';
 
+const template = require('./orders.html');
+
 const ordersComponent = {
-    templateUrl: './orders/orders.html',
+    template: template,
     bindings: {},
     controller: ordersComponentController
 };

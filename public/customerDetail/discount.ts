@@ -1,5 +1,7 @@
+const template = require('./discount.html');
+
 const discountComponent = {
-    templateUrl: './customerDetail/discount.html',
+    template: template,
     bindings: {
         customerDiscount: '<',
         update: '&'

@@ -1,5 +1,7 @@
+const template = require('./productDetail.html');
+
 const productDetailComponent = {
-    templateUrl: './productDetail/productDetail.html',
+    template: template,
     bindings: {
         product: '<'
     },

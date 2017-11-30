@@ -1,5 +1,7 @@
+const template = require('./products.html');
+
 const productsComponent = {
-    templateUrl: './products/products.html',
+    template: template,
     bindings: {},
     controller: productsComponentController
 };

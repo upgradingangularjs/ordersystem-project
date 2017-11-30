@@ -1,10 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: './app.ts',
+    entry: {
+        app: './app.ts',
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, '../../', 'dist')
     },
     module: {
@@ -37,6 +40,14 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: '[name].bundle.js',
+            minChunks(module, count){
+                var context = module.context;
+                return context && context.indexOf('node_modules') >= 0;
+            }
         })
     ]
 };

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --bail --progress",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --env.env=dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sam Julien",
@@ -26,6 +26,7 @@
     "ts-loader": "^3.1.1",
     "typescript": "2.4.2",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.9.5"
+    "webpack-dev-server": "^2.9.5",
+    "webpack-merge": "^4.1.1"
   }
 }

@@ -1,5 +1,7 @@
-var homeComponent = {
-    templateUrl: './home/home.html',
+const template = require('./home.html');
+
+const homeComponent = {
+    template: template,
     bindings: {},
     controller: homeComponentController
 };

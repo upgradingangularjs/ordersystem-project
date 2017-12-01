@@ -5,7 +5,7 @@ import 'jquery';
 import 'lodash';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import "./styles/app.css";
+import "./styles/app.scss";
 
 import hashPrefixConfig from './config.hashprefix';
 import routeProviderConfig from './config.routes';

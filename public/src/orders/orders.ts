@@ -12,8 +12,8 @@ const ordersComponent = {
     controller: ordersComponentController
 };
 
-ordersComponentController.$inject = ['orderService', 'customerService'];
-function ordersComponentController(orderService, customerService: CustomerService) {
+ordersComponentController.$inject = ['orderService', 'customerService', '$location'];
+function ordersComponentController(orderService, customerService: CustomerService, $location) {
     var vm = this;
     vm.title = 'Orders';
 
@@ -29,6 +29,10 @@ function ordersComponentController(orderService, customerService: CustomerServic
                 order.customerName = customer.fullName;
             });
         });
+    };
+
+    vm.goToCreateOrder = () => {
+        $location.path("/orders/create");
     };
 }
 

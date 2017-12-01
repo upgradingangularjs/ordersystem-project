@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersTableComponent } from './customers/customers-table.component';
 import { CustomerService } from './customers/customer.service';
+import { OrderService } from './orders/order.service';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { CustomerService } from './customers/customer.service';
         CustomersTableComponent
     ],
     providers: [
-        CustomerService
+        CustomerService,
+        OrderService
     ]
 })
 export class AppModule {

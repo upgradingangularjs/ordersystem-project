@@ -6,6 +6,8 @@ function routeProviderConfig($routeProvider){
         template: '<customers></customers>'
     }).when('/orders', {
         template: '<orders></orders>'
+    }).when('/orders/create', {
+        template: '<create-order></create-order>'
     }).when('/products', {
         template: '<products></products>'
     }).when('/customers/:id', {

@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h1>{{$ctrl.title}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <form novalidate name="createOrderForm" data-ng-submit="$ctrl.postOrder()">
+            <div class="form-group" data-ng-class="{ 'has-error' : createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine }">
+                <label for="customer">Customer</label>
+                <select class="form-control" name="customer" data-ng-options="customer.id as customer.fullName for customer in $ctrl.customers"
+                    data-ng-model="$ctrl.newOrder.customerId" required>
+                    <option></option>
+                </select>
+                <p data-ng-show="createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine" class="help-block">Customer is required.</p>
+            </div>
+            <div class="row" data-ng-repeat="item in $ctrl.newOrder.items">
+                <div class="col-sm-4 form-group">
+                    <label>Product {{$index + 1}}
+                        <select class="form-control" name="product{{$index}}" data-ng-options="product.id as product.name for product in $ctrl.products"
+                            data-ng-model="item.productId">
+                            <option></option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-sm-4 end form-group" data-ng-class="{ 'has-error' : createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine }">
+                    <label>Quantity
+                        <input name="product{{$index}}quantity" class="form-control" type="number" data-ng-model="item.quantity" data-ng-required="item.productId"
+                        />
+                    </label>
+                    <p data-ng-show="createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine"
+                        class="help-block">Quantity is required if you select a product.</p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" data-ng-disabled="createOrderForm.$invalid">Submit</button>
+        </form>
+    </div>
+</div>

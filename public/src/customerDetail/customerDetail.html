@@ -1,12 +1,12 @@
 <div class="row">
-    <h1>{{$ctrl.title}}: {{$ctrl.customer.fullName}}</h1>
+    <h1>{{title}}: {{customer.fullName}}</h1>
 </div>
 <div class="row">
     <div class="col-md-3">
         <b>Address:</b>
     </div>
     <div class="col-md-4 end">
-        {{$ctrl.address}}
+        {{address}}
     </div>
 </div>
 <div class="row">
@@ -14,14 +14,14 @@
         <b>Gets Discount:</b>
     </div>
     <div class="col-md-4 end">
-        {{$ctrl.customer.getsDiscount ? 'Yes' : 'No'}}
+        {{customer.getsDiscount ? 'Yes' : 'No'}}
     </div>
 </div>
 <br/>
-<discount data-ng-if="$ctrl.customer.getsDiscount" 
-    customer-discount="$ctrl.customer.discount"
-    update="$ctrl.updateDiscount(discount)"></discount>
-<div class="row" data-ng-if="$ctrl.orders.length > 0">
+<!-- <discount data-ng-if="customer.getsDiscount" 
+    customer-discount="customer.discount"
+    update="updateDiscount(discount)"></discount> -->
+<div class="row" data-ng-if="orders.length > 0">
     <div class="col-md-12">
         <h3>Orders</h3>
         <table class="table">
@@ -34,13 +34,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="order in $ctrl.orders">
+                <tr *ngFor="let order of orders">
                     <td>
-                        <a data-ng-href="#/orders/{{order.id}}">{{order.id}}</a>
+                        <a href="#/orders/{{order.id}}">{{order.id}}</a>
                     </td>
                     <td>{{order.orderDate}}</td>
                     <td>{{order.totalItems}}</td>
-                    <td>{{order.totalSale | currency}}</td>
+                    <td>{{order.totalSale | currency:'USD':true}}</td>
                 </tr>
             </tbody>
         </table>

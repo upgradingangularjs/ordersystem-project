@@ -5,11 +5,12 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import moduleName from './app.module.ajs';
 
-import { locationServiceProvider, productServiceProvider } from './ajs.upgradedproviders';
+import { locationServiceProvider, productServiceProvider, addressServiceProvider } from './ajs.upgradedproviders';
 
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersTableComponent } from './customers/customers-table.component';
+import { CustomerDetailComponent } from './customerDetail/customer-detail.component';
 import { CustomerService } from './customers/customer.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderService } from './orders/order.service';
@@ -27,20 +28,23 @@ import { CreateOrderComponent } from './createOrder/create-order.component';
         CustomersComponent,
         CustomersTableComponent,
         OrdersComponent,
-        CreateOrderComponent
+        CreateOrderComponent,
+        CustomerDetailComponent
     ],
     entryComponents: [
         HomeComponent,
         CustomersComponent,
         CustomersTableComponent,
         OrdersComponent,
-        CreateOrderComponent
+        CreateOrderComponent,
+        CustomerDetailComponent
     ],
     providers: [
         CustomerService,
         OrderService,
         locationServiceProvider,
-        productServiceProvider
+        productServiceProvider,
+        addressServiceProvider
     ]
 })
 export class AppModule {

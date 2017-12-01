@@ -8,13 +8,15 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
+import { Customer } from './customer.interface';
+
 @Injectable()
 export class CustomerService {
     constructor(private http: Http) {
         this.http = http;
     }
 
-    getCustomers(): Observable<any> {
+    getCustomers(): Observable<Customer[]> {
         return this.http.get('/api/customers')
             .map((response) => response.json());
     }

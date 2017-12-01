@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import moduleName from './app.module.ajs';
 
 import { HomeComponent } from './home/home.component';
+import { CustomersComponent } from './customers/customers.component';
+import { CustomersTableComponent } from './customers/customers-table.component';
 import { CustomerService } from './customers/customer.service';
 
 @NgModule({
@@ -14,10 +16,14 @@ import { CustomerService } from './customers/customer.service';
         HttpModule
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        CustomersComponent,
+        CustomersTableComponent
     ],
     entryComponents: [
-        HomeComponent
+        HomeComponent,
+        CustomersComponent,
+        CustomersTableComponent
     ],
     providers: [
         CustomerService

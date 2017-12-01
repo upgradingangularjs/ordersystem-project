@@ -17,21 +17,26 @@ const template = require('./orders.html');
 
 @Component({
     selector: 'orders',
-    template: template
+    template: template,
+    styles: ['tr a { cursor: pointer; }']
 })
 export class OrdersComponent implements OnInit {
     customers: Customer[];
     orders: Order[];
+    filteredOrders: Order[];
     title = 'Orders';
 
-    constructor(private orderService: OrderService, private customerService: CustomerService, 
-        @Inject('$location') private $location){
+    sortType: string;
+    private sortReverse: boolean = false;
+
+    constructor(private orderService: OrderService, private customerService: CustomerService,
+        @Inject('$location') private $location) {
 
     }
 
     ngOnInit(): void {
         let ordersData = Observable.fromPromise(this.orderService.getOrders());
-        Observable.forkJoin([ordersData, this.customerService.getCustomers()]).subscribe((data: Order[][]|Customer[][]) => {
+        Observable.forkJoin([ordersData, this.customerService.getCustomers()]).subscribe((data: Order[][] | Customer[][]) => {
             this.orders = data[0] as Order[];
             this.customers = data[1] as Customer[];
             this.orders.forEach((order) => {
@@ -40,16 +45,48 @@ export class OrdersComponent implements OnInit {
                 });
                 order.customerName = customer.fullName;
             });
+
+            this.filteredOrders = this.orders;
+            this.sortOrders('id');
         });
     }
 
-    //In the video I should not have used arrow syntax here.
+    //I again used arrow syntax in the videos for the below functions,
+    //which you shouldn't do because they transpile differently.
+    //Everything else is exactly the same.
     goToCreateOrder() {
         this.$location.path("/orders/create");
     };
+
+    sortOrders(property) {
+        this.sortType = property;
+        this.sortReverse = !this.sortReverse;
+        this.filteredOrders.sort(this.dynamicSort(property));
+    }
+
+    dynamicSort(property) {
+        let sortOrder = -1;
+
+        if (this.sortReverse)
+            sortOrder = 1;
+
+        return function (a, b) {
+            let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+
+            return result * sortOrder;
+        }
+    }
+
+    filterOrders(search: string) {
+        this.filteredOrders = this.orders.filter(o =>
+            Object.keys(o).some(k => {
+                if (typeof o[k] === 'string')
+                    return o[k].toLowerCase().includes(search.toLowerCase());
+            }));
+    }
 }
 
 angular.module('app')
-    .directive('orders', downgradeComponent({component: OrdersComponent}) as 
+    .directive('orders', downgradeComponent({ component: OrdersComponent }) as
     angular.IDirectiveFactory
-);
+    );

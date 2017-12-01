@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersTableComponent } from './customers/customers-table.component';
 import { CustomerDetailComponent } from './customerDetail/customer-detail.component';
+import { DiscountDirective } from './customerDetail/discount';
 import { CustomerService } from './customers/customer.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderService } from './orders/order.service';
@@ -29,7 +30,8 @@ import { CreateOrderComponent } from './createOrder/create-order.component';
         CustomersTableComponent,
         OrdersComponent,
         CreateOrderComponent,
-        CustomerDetailComponent
+        CustomerDetailComponent,
+        DiscountDirective
     ],
     entryComponents: [
         HomeComponent,

@@ -21,7 +21,6 @@ export class CustomerDetailComponent implements OnInit {
     orders: any[];
 
     constructor(private addressService: AddressService, private orderService: OrderService){
-
     }
     
     ngOnInit() {
@@ -35,8 +34,8 @@ export class CustomerDetailComponent implements OnInit {
             });
     }
 
-    updateDiscount(discount) {
-        this.customer.discount = discount;
+    updateDiscount($event) {
+        this.customer.discount = $event.discount;
     };
 }
 

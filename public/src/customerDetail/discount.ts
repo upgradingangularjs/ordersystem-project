@@ -1,6 +1,9 @@
+import { Directive, ElementRef, Injector, Input, Output, EventEmitter } from '@angular/core';
+import { UpgradeComponent } from '@angular/upgrade/static';
+
 const template = require('./discount.html');
 
-const discountComponent = {
+export const discountComponent = {
     template: template,
     bindings: {
         customerDiscount: '<',
@@ -42,4 +45,14 @@ function discountComponentController() {
     ];
 }
 
-export default discountComponent;
+@Directive({
+    selector: 'discount'
+})
+export class DiscountDirective extends UpgradeComponent {
+    @Input() customerDiscount: {};
+    @Output() update: EventEmitter<{}>;
+    
+    constructor(elementRef: ElementRef, injector: Injector){
+        super('discount', elementRef, injector);
+    }
+}

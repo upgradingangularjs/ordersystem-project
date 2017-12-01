@@ -11,7 +11,7 @@ import "./styles/app.scss";
 import hashPrefixConfig from './config.hashprefix';
 import routeProviderConfig from './config.routes';
 import navigationComponent from './navigation/navigation';
-import discountComponent from './customerDetail/discount';
+import { discountComponent } from './customerDetail/discount';
 import validateDateDirective from './directives/validateDate';
 import orderDetailComponent from './orderDetail/orderDetail';
 import productsComponent from './products/products';

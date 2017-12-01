@@ -6,6 +6,7 @@ declare var angular: angular.IAngularStatic;
 
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CustomerService {
@@ -13,10 +14,9 @@ export class CustomerService {
         this.http = http;
     }
 
-    getCustomers(): Promise<any> {
+    getCustomers(): Observable<any> {
         return this.http.get('/api/customers')
-            .toPromise()
-            .then((response) => response.json());
+            .map((response) => response.json());
     }
 
     getCustomer(id): Promise<any> {

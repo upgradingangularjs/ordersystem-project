@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs/Rx';
+import { CustomerService } from './customer.service';
+
 const template = require('./customers.html');
 
 const customersComponent = {
@@ -7,12 +10,12 @@ const customersComponent = {
 };
 
 customersComponentController.$inject = ['customerService', ];
-function customersComponentController(customerService){
+function customersComponentController(customerService: CustomerService){
     var vm = this;
     vm.title = 'Customers';
 
     vm.$onInit = () => {
-        customerService.getCustomers().then((data) => {
+        customerService.getCustomers().subscribe((data) => {
             vm.customers = data;
         });
     };

@@ -19,7 +19,6 @@ import ordersComponent from './orders/orders';
 import orderDetailComponent from './orderDetail/orderDetail';
 import productsComponent from './products/products';
 import productDetailComponent from './productDetail/productDetail';
-import CustomerService from './customers/customerService';
 import AddressService from './shared/addressService';
 import OrderService from './orders/orderService';
 import ProductService from './products/productService'
@@ -39,7 +38,6 @@ angular.module(MODULE_NAME, ['ngRoute'])
   .component('products', productsComponent)
   .component('productDetail', productDetailComponent)
   .directive('validateDate', validateDateDirective)
-  .service('customerService', CustomerService)
   .service('addressService', AddressService)
   .service('orderService', OrderService)
   .service('productService', ProductService);

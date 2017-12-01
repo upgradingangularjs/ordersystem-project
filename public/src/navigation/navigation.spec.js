@@ -1,7 +1,3 @@
-import 'angular';
-import 'angular-mocks';
-import '../app';
-
 describe('navigation component', function () {
     var $componentController, ctrl;
 

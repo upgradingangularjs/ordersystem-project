@@ -5,13 +5,11 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'test/**/*.spec.js'
+      'webpack.tests.js'
     ],
-    exclude: [
-      'node_modules/**/*.spec.js'
-    ],
+    exclude: [],
     preprocessors: {
-      'test/**/*.spec.js': ['webpack']
+      'webpack.tests.js': ['webpack']
     },
     webpack: {
       resolve: webpackConfig.resolve,

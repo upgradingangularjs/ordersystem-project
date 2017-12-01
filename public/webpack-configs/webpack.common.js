@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './app.ts',
+        app: './src/app.ts',
     },
     output: {
         filename: '[name].bundle.js',
@@ -47,7 +47,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './src/index.html'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

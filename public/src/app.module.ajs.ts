@@ -25,7 +25,9 @@ import AddressService from './shared/addressService';
 import OrderService from './orders/orderService';
 import ProductService from './products/productService'
 
-angular.module('app', ['ngRoute'])
+const MODULE_NAME = 'app';
+
+angular.module(MODULE_NAME, ['ngRoute'])
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
   .component('home', homeComponent)
@@ -43,3 +45,5 @@ angular.module('app', ['ngRoute'])
   .service('addressService', AddressService)
   .service('orderService', OrderService)
   .service('productService', ProductService);
+
+  export default MODULE_NAME;

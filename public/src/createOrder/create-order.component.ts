@@ -3,12 +3,9 @@ import { CustomerService } from '../customers/customer.service';
 import { OrderService } from '../orders/order.service';
 import productService from '../products/productService';
 
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
-
-import { downgradeComponent } from '@angular/upgrade/static';
-declare var angular: angular.IAngularStatic;
 
 const template = require('./createOrder.html');
 
@@ -57,8 +54,3 @@ export class CreateOrderComponent implements OnInit {
         });
     };
 }
-
-angular.module('app')
-    .directive('createOrder', downgradeComponent({component: CreateOrderComponent}) as
-    angular.IDirectiveFactory
-);

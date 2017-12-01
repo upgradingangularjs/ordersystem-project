@@ -6,7 +6,7 @@ import { Customer } from '../customers/customer.interface';
 import { OrderService } from './order.service';
 import { Order } from './order.interface';
 
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 

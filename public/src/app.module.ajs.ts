@@ -4,6 +4,8 @@ import 'angular-route';
 import 'jquery';
 import 'lodash';
 
+import { downgradeComponent, downgradeInjectable } from '@angular/upgrade/static';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import "./styles/app.scss";
@@ -17,7 +19,18 @@ import orderDetailComponent from './orderDetail/orderDetail';
 import productsComponent from './products/products';
 import productDetailComponent from './productDetail/productDetail';
 import AddressService from './shared/addressService';
-import ProductService from './products/productService'
+import ProductService from './products/productService';
+
+//ngUpgrade
+import { HomeComponent } from './home/home.component';
+import { CustomersComponent } from './customers/customers.component';
+import { CustomersTableComponent } from './customers/customers-table.component';
+import { CustomerDetailComponent } from './customerDetail/customer-detail.component';
+import { DiscountDirective } from './customerDetail/discount';
+import { CustomerService } from './customers/customer.service';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderService } from './orders/order.service';
+import { CreateOrderComponent } from './createOrder/create-order.component';
 
 const MODULE_NAME = 'app';
 
@@ -31,6 +44,7 @@ angular.module(MODULE_NAME, ['ngRoute'])
   .component('productDetail', productDetailComponent)
   .directive('validateDate', validateDateDirective)
   .service('addressService', AddressService)
-  .service('productService', ProductService);
+  .service('productService', ProductService)
+  .directive('createOrder', downgradeComponent({component: CreateOrderComponent}) as angular.IDirectiveFactory);
 
   export default MODULE_NAME;

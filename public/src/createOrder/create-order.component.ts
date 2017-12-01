@@ -1,0 +1,64 @@
+import { Component, OnInit, Inject } from '@angular/core';
+import { CustomerService } from '../customers/customer.service';
+import { OrderService } from '../orders/order.service';
+import productService from '../products/productService';
+
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/fromPromise';
+
+import { downgradeComponent } from '@angular/upgrade/static';
+declare var angular: angular.IAngularStatic;
+
+const template = require('./createOrder.html');
+
+@Component({
+    selector: 'create-order',
+    template: template
+})
+export class CreateOrderComponent implements OnInit {
+    customers: any[];
+    products: any[];
+    title = 'Create Order';
+
+    newOrder = {
+        customerId: null,
+        items: [
+            {
+                productId: null,
+                quantity: null
+            },
+            {
+                productId: null,
+                quantity: null
+            }
+        ]
+    };
+
+    constructor(private orderService: OrderService, private customerService: CustomerService, 
+        @Inject('$location') private $location, private productService: productService){
+
+        }
+
+    ngOnInit(): void {
+        let productData = Observable.fromPromise(this.productService.getProducts());
+        Observable.forkJoin([productData, this.customerService.getCustomers()]).subscribe((data) => {
+            this.products = data[0] as any[];
+            this.customers = data[1] as any[];
+        });
+    }
+    
+    postOrder() {
+        this.newOrder.items = this.newOrder.items.filter(x => x.productId !== null);
+
+        return this.orderService.postOrder(this.newOrder).subscribe((data) => {
+            console.log(data.id);
+            this.$location.path("/orders");
+        });
+    };
+}
+
+angular.module('app')
+    .directive('createOrder', downgradeComponent({component: CreateOrderComponent}) as
+    angular.IDirectiveFactory
+);

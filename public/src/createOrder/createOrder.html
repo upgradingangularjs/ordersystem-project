@@ -1,38 +1,45 @@
 <div class="row">
     <div class="col-sm-12">
-        <h1>{{$ctrl.title}}</h1>
+        <h1>{{title}}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <form novalidate name="createOrderForm" data-ng-submit="$ctrl.postOrder()">
-            <div class="form-group" data-ng-class="{ 'has-error' : createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine }">
+        <form novalidate #createOrderForm="ngForm" (ngSubmit)="postOrder()">
+            <div class="form-group" [ngClass]="{ 'has-error' : customerId.invalid && customerId.dirty }">
                 <label for="customer">Customer</label>
-                <select class="form-control" name="customer" data-ng-options="customer.id as customer.fullName for customer in $ctrl.customers"
-                    data-ng-model="$ctrl.newOrder.customerId" required>
-                    <option></option>
+                <select class="form-control" 
+                    name="customer" 
+                    [(ngModel)]="newOrder.customerId" 
+                    #customerId="ngModel"
+                    required>
+                    <option *ngFor="let customer of customers" [ngValue]="customer.id">{{customer.fullName}}</option>
                 </select>
-                <p data-ng-show="createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine" class="help-block">Customer is required.</p>
+                <p *ngIf="customerId.invalid && customerId.dirty" class="help-block">Customer is required.</p>
             </div>
-            <div class="row" data-ng-repeat="item in $ctrl.newOrder.items">
+            <div class="row" *ngFor="let item of newOrder.items; index as index">
                 <div class="col-sm-4 form-group">
-                    <label>Product {{$index + 1}}
-                        <select class="form-control" name="product{{$index}}" data-ng-options="product.id as product.name for product in $ctrl.products"
-                            data-ng-model="item.productId">
-                            <option></option>
-                        </select>
-                    </label>
+                    <label>Product {{index + 1}}
+                        <select class="form-control" 
+                            name="product{{index}}" 
+                            [(ngModel)]="item.productId"
+                            #productId="ngModel">
+                            <option *ngFor="let product of products" [ngValue]="product.id">{{product.name}}</option>
+                        </select></label>
                 </div>
-                <div class="col-sm-4 end form-group" data-ng-class="{ 'has-error' : createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine }">
+                <div class="col-sm-4 end form-group" [ngClass]="{ 'has-error' : quantity.invalid && quantity.dirty }">
                     <label>Quantity
-                        <input name="product{{$index}}quantity" class="form-control" type="number" data-ng-model="item.quantity" data-ng-required="item.productId"
+                        <input name="product{{index}}quantity" class="form-control" type="number"
+                            [(ngModel)]="item.quantity" 
+                            #quantity="ngModel"
+                            [required]="item.productId"
                         />
                     </label>
-                    <p data-ng-show="createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine"
+                    <p *ngIf="quantity.invalid && quantity.dirty"
                         class="help-block">Quantity is required if you select a product.</p>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" data-ng-disabled="createOrderForm.$invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="createOrderForm.invalid">Submit</button>
         </form>
     </div>
 </div>

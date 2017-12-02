@@ -10,9 +10,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 
-import { downgradeComponent } from '@angular/upgrade/static';
-declare var angular: angular.IAngularStatic;
-
 const template = require('./orders.html');
 
 @Component({
@@ -85,8 +82,3 @@ export class OrdersComponent implements OnInit {
             }));
     }
 }
-
-angular.module('app')
-    .directive('orders', downgradeComponent({ component: OrdersComponent }) as
-    angular.IDirectiveFactory
-    );

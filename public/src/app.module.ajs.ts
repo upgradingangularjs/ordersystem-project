@@ -45,6 +45,11 @@ angular.module(MODULE_NAME, ['ngRoute'])
   .directive('validateDate', validateDateDirective)
   .service('addressService', AddressService)
   .service('productService', ProductService)
-  .directive('createOrder', downgradeComponent({component: CreateOrderComponent}) as angular.IDirectiveFactory);
+  .directive('createOrder', downgradeComponent({ component: CreateOrderComponent }) as angular.IDirectiveFactory)
+  .directive('customerDetail', downgradeComponent({ component: CustomerDetailComponent }) as angular.IDirectiveFactory)
+  .directive('customersTable', downgradeComponent({ component: CustomersTableComponent }) as angular.IDirectiveFactory)
+  .directive('customers', downgradeComponent({component: CustomersComponent}) as angular.IDirectiveFactory)
+  .directive('home', downgradeComponent({component: HomeComponent}) as angular.IDirectiveFactory)
+  .directive('orders', downgradeComponent({ component: OrdersComponent }) as angular.IDirectiveFactory);
 
-  export default MODULE_NAME;
+export default MODULE_NAME;

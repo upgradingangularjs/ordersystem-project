@@ -5,9 +5,6 @@ import { Customer } from '../customers/customer.interface';
 import { OrderService } from '../orders/order.service';
 import AddressService from '../shared/addressService';
 
-import { downgradeComponent } from '@angular/upgrade/static';
-declare var angular: angular.IAngularStatic;
-
 const template = require('./customerDetail.html');
 
 @Component({
@@ -38,8 +35,3 @@ export class CustomerDetailComponent implements OnInit {
         this.customer.discount = $event.discount;
     };
 }
-
-angular.module('app')
-    .directive('customerDetail', downgradeComponent({component: CustomerDetailComponent}) as 
-    angular.IDirectiveFactory    
-);

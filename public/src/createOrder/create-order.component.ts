@@ -1,17 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CustomerService } from '../customers/customer.service';
 import { OrderService } from '../orders/order.service';
-import productService from '../products/productService';
+import { ProductService } from '../products/productService';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 
-const template = require('./createOrder.html');
-
 @Component({
     selector: 'create-order',
-    template: template
+    templateUrl: './createOrder.html'
 })
 export class CreateOrderComponent implements OnInit {
     customers: any[];
@@ -33,7 +31,7 @@ export class CreateOrderComponent implements OnInit {
     };
 
     constructor(private orderService: OrderService, private customerService: CustomerService, 
-        @Inject('$location') private $location, private productService: productService){
+        @Inject('$location') private $location, private productService: ProductService){
 
         }
 

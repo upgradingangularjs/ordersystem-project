@@ -10,11 +10,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 
-const template = require('./orders.html');
-
 @Component({
     selector: 'orders',
-    template: template,
+    templateUrl: './orders.html',
     styles: ['tr a { cursor: pointer; }']
 })
 export class OrdersComponent implements OnInit {
@@ -24,7 +22,7 @@ export class OrdersComponent implements OnInit {
     title = 'Orders';
 
     sortType: string;
-    private sortReverse: boolean = false;
+    sortReverse: boolean = false;
 
     constructor(private orderService: OrderService, private customerService: CustomerService,
         @Inject('$location') private $location) {

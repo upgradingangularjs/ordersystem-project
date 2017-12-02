@@ -19,8 +19,8 @@ import validateDateDirective from './directives/validateDate';
 import orderDetailComponent from './orderDetail/orderDetail';
 import productsComponent from './products/products';
 import productDetailComponent from './productDetail/productDetail';
-import AddressService from './shared/addressService';
-import ProductService from './products/productService';
+import { AddressService } from './shared/addressService';
+import { ProductService } from './products/productService';
 
 //ngUpgrade
 import { HomeComponent } from './home/home.component';

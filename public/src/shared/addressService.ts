@@ -1,4 +1,4 @@
-class AddressService {
+export class AddressService {
   constructor(){
 
   }
@@ -8,5 +8,3 @@ class AddressService {
     return customer.address1 + ", " + customer.city + ", " + customer.state + " " + customer.zip;
   }
 }
-
-export default AddressService;

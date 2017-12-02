@@ -1,4 +1,4 @@
-class ProductService {
+export class ProductService {
     $http: any;
     constructor($http) {
         this.$http = $http;
@@ -23,5 +23,3 @@ class ProductService {
 };
 
 ProductService.$inject = ['$http'];
-
-export default ProductService;

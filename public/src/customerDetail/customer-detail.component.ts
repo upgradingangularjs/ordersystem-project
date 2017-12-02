@@ -3,13 +3,11 @@ import * as moment from 'moment';
 
 import { Customer } from '../customers/customer.interface';
 import { OrderService } from '../orders/order.service';
-import AddressService from '../shared/addressService';
-
-const template = require('./customerDetail.html');
+import { AddressService } from '../shared/addressService';
 
 @Component({
     selector: 'customer-detail',
-    template: template
+    templateUrl: './customerDetail.html'
 })
 export class CustomerDetailComponent implements OnInit {
     @Input() customer: Customer;

@@ -1,5 +1,5 @@
-import productService from './products/productService';
-import AddressService from './shared/addressService';
+import { ProductService } from './products/productService';
+import { AddressService } from './shared/addressService';
 
 export function locationServiceFactory(i: any) {
     return i.get('$location');
@@ -16,7 +16,7 @@ export function productServiceFactory(i: any) {
 }
 
 export const productServiceProvider = {
-    provide: productService,
+    provide: ProductService,
     useFactory: productServiceFactory,
     deps: ['$injector']
 }

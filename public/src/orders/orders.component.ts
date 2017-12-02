@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import * as _ from 'lodash';
 import { CustomerService } from '../customers/customer.service';
@@ -25,7 +26,7 @@ export class OrdersComponent implements OnInit {
     sortReverse: boolean = false;
 
     constructor(private orderService: OrderService, private customerService: CustomerService,
-        @Inject('$location') private $location) {
+        private router: Router) {
 
     }
 
@@ -50,7 +51,7 @@ export class OrdersComponent implements OnInit {
     //which you shouldn't do because they transpile differently.
     //Everything else is exactly the same.
     goToCreateOrder() {
-        this.$location.path("/orders/create");
+        this.router.navigate(['/orders/create']);
     };
 
     sortOrders(property) {

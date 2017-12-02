@@ -9,7 +9,9 @@ export interface Order {
     items: [
         {
             quantity: number,
-            productId: number
+            productId: number,
+            productName: string,
+            itemPrice: number
         }
     ]
 }

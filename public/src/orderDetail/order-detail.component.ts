@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 
+import { Order } from '../orders/order.interface';
 import { Customer } from '../customers/customer.interface';
 import { CustomerService } from '../customers/customer.service';
 import { ProductService } from '../products/product.service';
@@ -15,12 +17,17 @@ import { ProductService } from '../products/product.service';
 export class OrderDetailComponent implements OnInit {
     title = 'Order Detail';
     customer: Customer;
-    @Input() order: any;
+    order: Order;
     dataLoaded: boolean = false;
 
-    constructor(private productService: ProductService, private customerService: CustomerService) { }
+    constructor(private productService: ProductService, private customerService: CustomerService,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
+        this.route.data.subscribe((data: { order: Order}) => {
+            this.order = data.order;
+        });
+
         Observable.forkJoin([this.productService.getProducts(), this.customerService.getCustomer(this.order.customerId)]).subscribe((data) => {
             var products = data[0];
             this.customer = data[1] as Customer;

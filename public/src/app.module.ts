@@ -7,6 +7,8 @@ import { MODULE_NAME } from './app.module.ajs';
 
 import { locationServiceProvider } from './ajs.upgradedproviders';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -28,9 +30,11 @@ import { AddressService } from './shared/address.service';
         BrowserModule,
         UpgradeModule,
         HttpModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule
     ],
     declarations: [
+        AppComponent,
         HomeComponent,
         CustomersComponent,
         CustomersTableComponent,
@@ -62,13 +66,9 @@ import { AddressService } from './shared/address.service';
         locationServiceProvider,
         ProductService,
         AddressService
-    ]
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(private upgrade: UpgradeModule){
-
-    }
-    ngDoBootstrap(){
-        this.upgrade.bootstrap(document.documentElement, [MODULE_NAME], {strictDi: true});
-    }
+    constructor() { }
 }

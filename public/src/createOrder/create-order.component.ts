@@ -1,4 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CustomerService } from '../customers/customer.service';
 import { OrderService } from '../orders/order.service';
 import { ProductService } from '../products/product.service';
@@ -31,7 +33,7 @@ export class CreateOrderComponent implements OnInit {
     };
 
     constructor(private orderService: OrderService, private customerService: CustomerService, 
-        @Inject('$location') private $location, private productService: ProductService){
+        private router: Router, private productService: ProductService){
 
         }
 
@@ -47,7 +49,7 @@ export class CreateOrderComponent implements OnInit {
 
         return this.orderService.postOrder(this.newOrder).subscribe((data) => {
             console.log(data.id);
-            this.$location.path("/orders");
+            this.router.navigate(['/orders']);
         });
     };
 }

@@ -1,3 +1,5 @@
+import { Discount } from '../customerDetail/discount.interface';
+
 export interface Customer {
     id: number,
     fullName: string,
@@ -7,9 +9,5 @@ export interface Customer {
     state: string,
     zip: string,
     getsDiscount: boolean,
-    discount: {
-        discountId: number,
-        discountPercent: number,
-        discountName: string
-    }
- }
+    discount: Discount
+ } 

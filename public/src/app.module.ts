@@ -5,17 +5,23 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { MODULE_NAME } from './app.module.ajs';
 
-import { locationServiceProvider, productServiceProvider, addressServiceProvider } from './ajs.upgradedproviders';
+import { locationServiceProvider } from './ajs.upgradedproviders';
 
 import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersTableComponent } from './customers/customers-table.component';
 import { CustomerDetailComponent } from './customerDetail/customer-detail.component';
-import { DiscountDirective } from './customerDetail/discount';
+import { DiscountComponent } from './customerDetail/discount.component';
 import { CustomerService } from './customers/customer.service';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailComponent } from './orderDetail/order-detail.component';
 import { OrderService } from './orders/order.service';
 import { CreateOrderComponent } from './createOrder/create-order.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './productDetail/product-detail.component';
+import { ProductService } from './products/product.service';
+import { AddressService } from './shared/address.service';
 
 @NgModule({
     imports: [
@@ -31,7 +37,11 @@ import { CreateOrderComponent } from './createOrder/create-order.component';
         OrdersComponent,
         CreateOrderComponent,
         CustomerDetailComponent,
-        DiscountDirective
+        DiscountComponent,
+        NavigationComponent,
+        ProductsComponent,
+        ProductDetailComponent,
+        OrderDetailComponent
     ],
     entryComponents: [
         HomeComponent,
@@ -39,14 +49,19 @@ import { CreateOrderComponent } from './createOrder/create-order.component';
         CustomersTableComponent,
         OrdersComponent,
         CreateOrderComponent,
-        CustomerDetailComponent
+        CustomerDetailComponent,
+        DiscountComponent,
+        NavigationComponent,
+        ProductsComponent,
+        ProductDetailComponent,
+        OrderDetailComponent
     ],
     providers: [
         CustomerService,
         OrderService,
         locationServiceProvider,
-        productServiceProvider,
-        addressServiceProvider
+        ProductService,
+        AddressService
     ]
 })
 export class AppModule {

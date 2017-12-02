@@ -3,7 +3,7 @@ import * as moment from 'moment';
 
 import { Customer } from '../customers/customer.interface';
 import { OrderService } from '../orders/order.service';
-import { AddressService } from '../shared/addressService';
+import { AddressService } from '../shared/address.service';
 
 @Component({
     selector: 'customer-detail',

@@ -18,10 +18,9 @@ export class CustomerService {
             .map((response) => response.json());
     }
 
-    getCustomer(id): Promise<any> {
+    getCustomer(id): Observable<Customer> {
         return this.http.get(`/api/customers/${id}`)
-            .toPromise()
-            .then((response) => response.json());
+            .map((response) => response.json());
     }
 
     postCustomer(customer): Promise<any> {

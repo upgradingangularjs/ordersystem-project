@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CustomerService } from '../customers/customer.service';
 import { OrderService } from '../orders/order.service';
-import { ProductService } from '../products/productService';
+import { ProductService } from '../products/product.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
@@ -36,8 +36,7 @@ export class CreateOrderComponent implements OnInit {
         }
 
     ngOnInit(): void {
-        let productData = Observable.fromPromise(this.productService.getProducts());
-        Observable.forkJoin([productData, this.customerService.getCustomers()]).subscribe((data) => {
+        Observable.forkJoin([this.productService.getProducts(), this.customerService.getCustomers()]).subscribe((data) => {
             this.products = data[0] as any[];
             this.customers = data[1] as any[];
         });

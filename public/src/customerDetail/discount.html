@@ -1,26 +1,30 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <div class="form-group row">
-            <label for="inputDiscountType" class="col-md-3 col-form-label margin-top-6">Discount Type</label>
-            <div class="col-md-3 margin-top-6" data-ng-if="!$ctrl.editDiscount">
-                {{$ctrl.customerDiscount.discountName}}
+            <label for="inputDiscountType" class="col-sm-3 col-form-label margin-top-6">Discount Type</label>
+            <div class="col-sm-3 margin-top-6" *ngIf="!editDiscount">
+                {{customerDiscount.discountName}}
             </div>
-            <div class="col-md-4" data-ng-if="$ctrl.editDiscount">
-                <select class="form-control" id="inputDiscountType" data-ng-options="discount as discount.discountName for discount in $ctrl.discounts"
-                    data-ng-model="$ctrl.selectedDiscount">
+            <div class="col-sm-4"  *ngIf="editDiscount">
+                <select class="form-control" 
+                    id="inputDiscountType"
+                    [(ngModel)]="selectedDiscount">
+                    <option *ngFor="let discount of discounts" [ngValue]="discount">{{discount.discountName}}</option>
                 </select>
             </div>
-            <div class="col-md-2 end">
-                <button class="btn btn-info" data-ng-if="!$ctrl.editDiscount" data-ng-click="$ctrl.editDiscountType()">Edit</button>
-                <button class="btn btn-info" data-ng-if="$ctrl.editDiscount" data-ng-click="$ctrl.updateDiscountType()">Save</button>
+            <div class="col-sm-2 end">
+                <button class="btn btn-info" *ngIf="!editDiscount" 
+                                (click)="editDiscountType()">Edit</button>
+                <button class="btn btn-info" *ngIf="editDiscount" 
+                                (click)="updateDiscountType()">Save</button>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <b>Discount Percent:</b>
             </div>
-            <div class="col-md-4 end">
-                {{$ctrl.customerDiscount.discountPercent}}%
+            <div class="col-sm-4 end">
+                {{customerDiscount.discountPercent}}%
             </div>
         </div>
     </div>

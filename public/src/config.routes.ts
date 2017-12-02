@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+
 routeProviderConfig.$inject = ['$routeProvider'];
 function routeProviderConfig($routeProvider){
     $routeProvider.when('/', {
@@ -16,12 +19,12 @@ function routeProviderConfig($routeProvider){
             customer: [
                 '$route', 'customerService', function ($route, customerService) {
                     var id = parseInt($route.current.params.id);
-                    return customerService.getCustomer(id);
+                    return customerService.getCustomer(id).toPromise().then(data => data);
                 }
             ]
         }
     }).when('/orders/:id', {
-        template: '<order-detail order="$resolve.order"></order-detail>',
+        template: '<order-detail [order]="$resolve.order"></order-detail>',
         resolve: {
             order: [
                 '$route', 'orderService', function ($route, orderService) {
@@ -31,7 +34,7 @@ function routeProviderConfig($routeProvider){
             ]
         }
     }).when('/products/:id', {
-        template: '<product-detail product="$resolve.product"></product-detail>',
+        template: '<product-detail [product]="$resolve.product"></product-detail>',
         resolve: {
             product: [
                 '$route', 'productService', function ($route, productService) {

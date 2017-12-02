@@ -20,9 +20,6 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "@angular/upgrade": "^4.0.0",
-    "angular": "1.6.6",
-    "angular-route": "1.6.6",
     "bootstrap": "3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
@@ -36,7 +33,6 @@
   "devDependencies": {
     "@angular/compiler-cli": "^4.4.6",
     "@ngtools/webpack": "^1.8.5",
-    "@types/angular": "^1.6.39",
     "@types/node": "^8.0.53",
     "angular-mocks": "^1.6.7",
     "angular2-template-loader": "^0.6.2",

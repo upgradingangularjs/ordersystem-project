@@ -1,11 +1,14 @@
+import 'jquery';
+import 'lodash';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import "./styles/app.scss";
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { MODULE_NAME } from './app.module.ajs';
-
-import { locationServiceProvider } from './ajs.upgradedproviders';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +31,6 @@ import { AddressService } from './shared/address.service';
 @NgModule({
     imports: [
         BrowserModule,
-        UpgradeModule,
         HttpModule,
         FormsModule,
         AppRoutingModule
@@ -63,7 +65,6 @@ import { AddressService } from './shared/address.service';
     providers: [
         CustomerService,
         OrderService,
-        locationServiceProvider,
         ProductService,
         AddressService
     ],

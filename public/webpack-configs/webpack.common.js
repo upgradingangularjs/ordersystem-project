@@ -5,6 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
     entry: {
+        ajs: './src/app.module.ajs.ts',
         app: './src/main.ts',
     },
     output: {
@@ -50,7 +51,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new BundleAnalyzerPlugin(),
+        //new BundleAnalyzerPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: '[name].bundle.js',

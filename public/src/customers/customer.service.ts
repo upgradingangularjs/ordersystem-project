@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { downgradeInjectable } from '@angular/upgrade/static';
-declare var angular: angular.IAngularStatic;
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -33,6 +30,3 @@ export class CustomerService {
             .then((data) => data);
     }
 }
-
-angular.module('app')
-    .factory('customerService', downgradeInjectable(CustomerService));

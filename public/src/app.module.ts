@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import moduleName from './app.module.ajs';
+import { MODULE_NAME } from './app.module.ajs';
 
 import { locationServiceProvider, productServiceProvider, addressServiceProvider } from './ajs.upgradedproviders';
 
@@ -54,6 +54,6 @@ export class AppModule {
 
     }
     ngDoBootstrap(){
-        this.upgrade.bootstrap(document.documentElement, [moduleName], {strictDi: true});
+        this.upgrade.bootstrap(document.documentElement, [MODULE_NAME], {strictDi: true});
     }
 }

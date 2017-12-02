@@ -51,7 +51,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let order of filteredOrders">
-                    <td><a href="#/orders/{{order.id}}">{{order.id}}</a></td>
+                    <td><a [routerLink]="['/orders', order.id]">{{order.id}}</a></td>
                     <td>{{order.customerName}}</td>
                     <td>{{order.totalItems}}</td>
                     <td>{{order.totalSale | currency:'USD':true}}</td>

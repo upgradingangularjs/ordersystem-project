@@ -12,7 +12,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let product of products">
-                    <td><a href="#/products/{{product.id}}">{{product.id}}</a></td>
+                    <td><a [routerLink]="['/products', product.id]">{{product.id}}</a></td>
                     <td>{{product.name}}</td>
                     <td>{{product.color}}</td>
                     <td>{{product.price | currency:'USD':true}}</td>

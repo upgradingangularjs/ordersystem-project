@@ -54,7 +54,7 @@
                     <td><a [routerLink]="['/orders', order.id]">{{order.id}}</a></td>
                     <td>{{order.customerName}}</td>
                     <td>{{order.totalItems}}</td>
-                    <td>{{order.totalSale | currency:'USD':true}}</td>
+                    <td>{{order.totalSale | currency:'USD':'symbol'}}</td>
                 </tr>
             </tbody>
         </table>

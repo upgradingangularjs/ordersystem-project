@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
 
 import { Product } from './product.interface';
 
 @Injectable()
-export class ProductService {
-    constructor(private http: Http) { }
+export class ProductService{
+    constructor(private http: HttpClient) {}
 
-    getProducts() {
-        return this.http.get('/api/products')
-            .map((response) => response.json());
+    getProducts(){
+        return this.http.get<any>('/api/products');
     }
 
-    getProduct(id): Observable<Product> {
-        return this.http.get(`/api/products/${id}`)
-            .map((response) => response.json());
+    getProduct(id): Observable<Product>{
+        return this.http.get<Product>(`/api/products/${id}`);
     }
 
-    postProduct(product) {
+    postProduct(product){
         return this.http.post('/api/products', product)
             .toPromise()
-            .then((response) => response.json());
+            .then((response) => response);
     }
 }

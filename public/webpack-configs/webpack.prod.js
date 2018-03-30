@@ -17,7 +17,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts?$/,
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 use: '@ngtools/webpack',
                 exclude: [
                     /node_modules/,
@@ -44,7 +44,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ngToolsWeback.AotPlugin({
+        new ngToolsWeback.AngularCompilerPlugin({
             tsConfigPath: './tsconfig.aot.json',
             entryModule: path.resolve(__dirname, '../src/app.module.ts#AppModule')
         }),

@@ -7,7 +7,7 @@ import "./styles/app.scss";
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +31,7 @@ import { AddressService } from './shared/address.service';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
         AppRoutingModule
     ],

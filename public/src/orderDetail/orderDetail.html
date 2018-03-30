@@ -27,7 +27,7 @@
                         <td><a href="#/products/{{item.productId}}">{{item.productId}}</a></td>
                         <td>{{item.productName}}</td>
                         <td>{{item.quantity}}</td>
-                        <td>{{item.itemPrice | currency:'USD':true}}</td>
+                        <td>{{item.itemPrice | currency:'USD':'symbol'}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -38,7 +38,7 @@
             <h4>Total Cost:</h4>
         </div>
         <div class="col-md-4 end">
-            <h4>{{order.totalCost | currency:'USD':true}}</h4>
+            <h4>{{order.totalCost | currency:'USD':'symbol'}}</h4>
         </div>
     </div>
     <div class="row" *ngIf="customer.getsDiscount">
@@ -54,7 +54,7 @@
             <h4>Total Sale:</h4>
         </div>
         <div class="col-md-4 end">
-            <h4>{{order.totalSale | currency:'USD':true}}</h4>
+            <h4>{{order.totalSale | currency:'USD':'symbol'}}</h4>
         </div>
     </div>
 </div>

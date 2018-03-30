@@ -1,37 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
 
 import { Order } from './order.interface';
 
 @Injectable()
 export class OrderService{
-    constructor(private http: Http) {
-        this.http = http;
-    }
+    constructor(private http: HttpClient) { }
 
     getOrders(): Promise<Order[]>{
-        return this.http.get('/api/orders')
+        return this.http.get<Order[]>('/api/orders')
             .toPromise()
-            .then((response) => response.json());
+            .then((response) => response);
     }
 
     getOrder(id): Observable<Order>{
-        return this.http.get(`/api/orders/${id}`)
-            .map((response) => response.json());
+        return this.http.get<Order>(`/api/orders/${id}`);
     }
 
     getOrdersByCustomer(customerId): Promise<Order[]>{
-        return this.http.get(`/api/customers/${customerId}/orders`)
+        return this.http.get<Order[]>(`/api/customers/${customerId}/orders`)
             .toPromise()
-            .then((response) => response.json());
+            .then((response) => response);
     }
 
     postOrder(order): Observable<Order>{
-        return this.http.post('/api/orders', order)
-            .map((response) => response.json());
+        return this.http.post<Order>('/api/orders', order);
     }
 }

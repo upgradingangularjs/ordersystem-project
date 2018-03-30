@@ -15,7 +15,7 @@
                     <td><a [routerLink]="['/products', product.id]">{{product.id}}</a></td>
                     <td>{{product.name}}</td>
                     <td>{{product.color}}</td>
-                    <td>{{product.price | currency:'USD':true}}</td>
+                    <td>{{product.price | currency:'USD':'symbol'}}</td>
                 </tr>
             </tbody>
         </table>
